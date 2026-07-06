@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RedBus Clone</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+}
+
+/* MAIN LAYOUT */
+.main {
+    display: flex;
+    height: 100vh;
+}
+
+/* LEFT SIDE */
+.left {
+    width: 50%;
+    background: linear-gradient(to bottom, #d32f2f, #ff5252);
+    color: white;
+    padding: 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+.left h1 {
+    font-size: 50px;
+}
+
+.left h2 {
+    margin-top: 10px;
+}
+
+.left p {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+/* BUS IMAGE */
+.bus-img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 500px;
+}
+
+/* RIGHT SIDE */
+.right {
+    width: 50%;
+    background: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* BOX */
+.box {
+    width: 350px;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* INPUTS */
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #d32f2f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #b71c1c;
+}
+
+/* HIDE BOOKING INITIALLY */
+#bookingForm {
+    display: none;
+}
+</style>
+
+<script>
+function loginUser() {
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+
+    if(user === "admin" && pass === "1234") {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("bookingForm").style.display = "block";
+    } else {
+        alert("Invalid Login ❌");
+    }
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="main">
+
+    <!-- LEFT SIDE -->
+    <div class="left">
+        <h1>redBus</h1>
+        <h2>India’s No.1 Online Bus Booking</h2>
+
+        <p>✔ 36 Million Happy Customers</p>
+        <p>✔ Safe & Secure Booking</p>
+        <p>✔ 24/7 Customer Support</p>
+
+        <!-- BUS IMAGE -->
+        <img src="https://pngimg.com/uploads/bus/bus_PNG8617.png" class="bus-img">
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="right">
+        <div class="box">
+
+            <!-- LOGIN -->
+            <div id="loginBox">
+                <h2>Login</h2>
+                <input type="text" id="username" placeholder="Username">
+                <input type="password" id="password" placeholder="Password">
+                <button onclick="loginUser()">Login</button>
+            </div>
+
+            <!-- BOOKING FORM -->
+            <div id="bookingForm">
+                <h2>Book Ticket</h2>
+
+                <form>
+                    <input type="text" placeholder="Passenger Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="tel" placeholder="Phone" required>
+
+                    <input type="text" placeholder="From" required>
+                    <input type="text" placeholder="To" required>
+
+                    <input type="date" required>
+                    <input type="number" placeholder="Seats" required>
+
+                    <label>Gender:</label><br>
+                    <input type="radio" name="gender"> Male
+                    <input type="radio" name="gender"> Female
+
+                    <select>
+                        <option>AC</option>
+                        <option>Non-AC</option>
+                        <option>Sleeper</option>
+                    </select>
+
+                    <textarea placeholder="Boarding Point"></textarea>
+
+                    <button type="submit">Book Ticket</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
