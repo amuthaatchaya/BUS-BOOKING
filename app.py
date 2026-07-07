@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-import mysql.connector
+# import mysql.connector   # ❌ Commented for Vercel
 
 app = Flask(__name__)
 
@@ -7,14 +7,19 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+
+# ❌ MySQL connection (commented)
+"""
 db = mysql.connector.connect(
-host="localhost",
-user="root",
-password="atchu@123",  
-database="bus_booking"
+    host="localhost",
+    user="root",
+    password="atchu@123",
+    database="bus_booking"
 )
 
 cursor = db.cursor()
+"""
+
 
 @app.route('/book', methods=['POST'])
 def book():
@@ -29,18 +34,22 @@ def book():
     bus_type = request.form['bus_type']
     boarding = request.form['boarding']
 
-    query = """
+    # ❌ MySQL query (commented)
+    """
+    query = '''
     INSERT INTO bookings 
     (name, email, phone, source, destination, travel_date, seats, gender, bus_type, boarding)
     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-    """
+    '''
 
     values = (name, email, phone, source, destination, date, seats, gender, bus_type, boarding)
 
     cursor.execute(query, values)
     db.commit()
+    """
 
-    return "<h2>🎉 Ticket Booked Successfully & Saved in Database!</h2>"
+    return "<h2>🎉 Ticket Booked Successfully!</h2>"
+
 
 if __name__ == '__main__':
     app.run(debug=True)
